@@ -1,5 +1,5 @@
 const YEAR_MIN = 18;
-const YEAR_MAX = 23;
+const YEAR_MAX = 25;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const flag = `${urlParams.get('flag')}`
@@ -45,37 +45,6 @@ function handleMonthChange() {
   subjectElement = document.getElementById("subject");
   yearElement = document.getElementById("year");
   subjectGroup = subjectElement.selectedOptions[0].parentElement.label;
-
-  disableOptions = (one, two, three) => {
-    document.getElementById("one").disabled = one;
-    document.getElementById("two").disabled = two;
-    document.getElementById("three").disabled = three;
-  };
-
-  disableOptions(false, false, false);
-
-  if (monthElement.value === "m" && subjectGroup === "IGCSE") {
-    disableOptions(true, false, true);
-  } else if (monthElement.value === "m" && subjectGroup === "O Levels") {
-    disableOptions(true, true, true);
-  } else if (monthElement.value === "s" && subjectGroup === "O Levels") {
-    disableOptions(false, false, true);
-  } else if (
-    ["5090", "5070", "5054", "5129"].includes(subjectElement.value) &&
-    monthElement.value === "w"
-  ) {
-    disableOptions(false, false, true);
-  } else if (subjectElement.value === "2281" && monthElement.value === "w") {
-    disableOptions(true, false, false);
-  } else if (
-    subjectGroup === "AS and A Levels" &&
-    alevelElement.value == "as-level" &&
-    monthElement.value === "m"
-  ) {
-    disableOptions(true, false, true);
-  } else if (alevelElement.value == "a2-level" && monthElement.value === "m") {
-    disableOptions(true, false, true);
-  }
 }
 
 document.getElementById("main-form").addEventListener("submit", (e) => {

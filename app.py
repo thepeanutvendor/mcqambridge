@@ -8,6 +8,24 @@ app = Flask(__name__)
 ROOT_DIR = os.getcwd()
 answers = {}
 
+subject_map = {
+    "0455": "IGCSE/Economics-0455",
+    "0610": "IGCSE/Biology-0610",
+    "0620": "IGCSE/Chemistry-0620",
+    "0625": "IGCSE/Physics-0625",
+    "0653": "IGCSE/Science-Combined-0653",
+    "2281": "O-Level/Economics-2281",
+    "5054": "O-Level/Physics-5054",
+    "5070": "O-Level/Chemistry-5070",
+    "5090": "O-Level/Biology-5090",
+    "5129": "O-Level/Science-Combined-5129",
+    "9700": "A-Level/Biology-9700",
+    "9701": "A-Level/Chemistry-9701",
+    "9702": "A-Level/Physics-9702",
+    "9706": "A-Level/Accounting-9706",
+    "9708": "A-Level/Economics-9708",
+}
+
 def get_answers(ms_name):
     """Takes the marking scheme name as a parameter, goes through JSON file to find matching name, and grabs the associated answers list"""
     f = open(os.path.join(ROOT_DIR, 'static', 'answers.json'))
@@ -21,9 +39,18 @@ def get_answers(ms_name):
 
 def get_paper_name(subj, year, month, variant, ce, alevel):
     """Gets paper name, for statistics and pdf.html title"""
-    if (ce is None or ce == 1) and alevel == 'a2-level':
+    if ce == '1' and alevel == 'a2-level':
         ce = '3'
-    return f"{subj}_{month}{str(year)}_ms_{ce}{variant}"
+    if month == 'm' and year == '22':
+        url_month = 'Feb-March'
+    elif month == 'm' and year != '22':
+        url_month = 'March'
+    elif month == 's':
+        url_month = 'May-June'
+    else:
+        url_month = 'Oct-Nov'
+    
+    return f"{subject_map[subj]}/20{str(year)}-{url_month}/{subj}_{month}{str(year)}_ms_{ce}{variant}.pdf"
 
 
 @app.route("/")
@@ -41,8 +68,8 @@ def pdf_display():
 
     if request.method == 'POST':
         paper_name = get_paper_name(subj, year, month, variant, ce, alevel)
-        answers = get_answers(paper_name)
-
+        answers = get_answers(paper_name.split('/')[3])
+        print(paper_name)
         if (answers == False):
             return redirect(url_for('.index', flag=answers))
 
