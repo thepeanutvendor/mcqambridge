@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/ghassbomb/mcqambridge">
+  <a href="https://github.com/thepeanutvendor/mcqambridge">
     <!-- Please provide path to your logo here -->
     <img src="static/favicons/android-chrome-512x512.png" alt="Logo" width="100" height="100">
   </a>
@@ -40,7 +40,7 @@ This project requires Python 3 (any version of Python 3 that supports the requir
 
 ### Installation & Usage
 
-1. Clone the repository with: `git clone https://github.com/ghassbomb/mcqambridge.git`
+1. Clone the repository with: `git clone https://github.com/thepeanutvendor/mcqambridge.git`
 2. Change into the project directory: `cd mcqambridge`
 3. Create a virtualenv environment (optional)
 4. Install the required dependencies using pip: `pip install -r requirements.txt`
@@ -57,9 +57,7 @@ See the [open issues](https://github.com/ghassbomb/mcqambridge/issues) for a lis
 
 ## Contributing
 
-Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please create a pull request. For major changes, please open an issue to discuss the changes beforehand. You can also contact me at `ghass.shahzad@gmail.com` for any requests and such.
-
-Please read [our contribution guidelines](docs/CONTRIBUTING.md), and thank you for being involved!
+Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please create a pull request. For major changes, please open an issue to discuss the changes beforehand. You can also contact me at `main.scribe859@passinbox.com` for any requests and such.
 
 ## License
 
